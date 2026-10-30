@@ -1,0 +1,6 @@
+{
+  "name": "A Little World for Dikshit · By Gunjan",
+  "description": "A dreamy, cinematic interactive romantic experience crafted with affection, curiosity, and unspoken thoughts from Gunjan to Dikshit.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
