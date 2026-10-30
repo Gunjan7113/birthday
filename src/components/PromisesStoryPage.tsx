@@ -77,53 +77,53 @@ export const PromisesStoryPage: React.FC<PromisesStoryPageProps> = ({
   }, [currentSlideIndex, selectedImage]);
 
   return (
-    <div className="relative min-h-screen text-[#e8ebf5] bg-[#070914] z-20 pb-24 animate-in fade-in duration-500">
+    <div className="relative min-h-screen text-[#e8ebf5] bg-[#070914] z-20 pb-20 sm:pb-24 animate-in fade-in duration-500 w-full overflow-x-hidden">
       {/* Top Navigation Bar of the New Page */}
-      <nav className="sticky top-0 z-40 backdrop-blur-md bg-[#070914]/85 border-b border-white/[0.08] px-6 lg:px-12 py-3.5">
-        <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
+      <nav className="sticky top-0 z-40 backdrop-blur-md bg-[#070914]/85 border-b border-white/[0.08] px-3 sm:px-6 lg:px-12 py-2.5 sm:py-3.5">
+        <div className="max-w-6xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
           <button
             onClick={onBackToHome}
-            className="flex items-center gap-2 text-xs md:text-sm font-medium text-amber-200/90 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] px-4 py-2 rounded-full transition-all border border-white/10 cursor-pointer"
+            className="flex items-center gap-1.5 sm:gap-2 text-xs md:text-sm font-medium text-amber-200/90 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] px-3 sm:px-4 py-2 rounded-full transition-all border border-white/10 cursor-pointer min-h-[40px]"
           >
-            <ArrowLeft className="w-4 h-4 text-amber-300" />
-            <span>Return to Starlit World</span>
+            <ArrowLeft className="w-4 h-4 text-amber-300 shrink-0" />
+            <span className="truncate max-w-[140px] xs:max-w-none">Back to Starlit World</span>
           </button>
 
-          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-slate-400 font-mono hidden sm:flex">
+          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-slate-400 font-mono hidden md:flex truncate">
             <span>{senderName} & {recipientName}</span>
             <span aria-hidden="true">·</span>
             <span className="text-amber-200">The 8 Promises & Story</span>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono text-amber-200/70 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-300/20">
-              Page 2 of 2
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="text-[10px] sm:text-[11px] font-mono text-amber-200/70 bg-amber-400/10 px-2.5 sm:px-3 py-1 rounded-full border border-amber-300/20">
+              8 Truths
             </span>
           </div>
         </div>
       </nav>
 
       {/* Hero Intro Header */}
-      <header className="relative pt-12 pb-12 px-6 lg:px-12 max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-rose-300/90 mb-4 bg-rose-500/10 px-3.5 py-1.5 rounded-full border border-rose-500/20">
-          <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-          <span>A Dedicated Chapter for {recipientName}</span>
+      <header className="relative pt-8 sm:pt-12 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-12 max-w-4xl mx-auto text-center w-full">
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs uppercase tracking-widest text-rose-300/90 mb-3 sm:mb-4 bg-rose-500/10 px-3 sm:px-3.5 py-1.5 rounded-full border border-rose-500/20 max-w-full">
+          <Sparkles className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+          <span className="truncate">A Dedicated Chapter for {recipientName}</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif-dreamy font-normal text-white mb-4 leading-tight">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif-dreamy font-normal text-white mb-3 sm:mb-4 leading-tight break-words px-2">
           The 8 Truths of How I Love
         </h1>
 
-        <p className="text-sm md:text-base text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm md:text-base text-slate-300 font-light max-w-2xl mx-auto leading-relaxed px-2">
           Not casual promises, not words that fade with time. These are the truths I carry in my heart for you, {recipientName}. Explore each slide at your own pace.
         </p>
 
         {/* View Switcher: Interactive Slide Deck vs Watch Video Reel */}
         {videoSrc && (
-          <div className="flex items-center justify-center gap-3 mt-6">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mt-5 sm:mt-6">
             <button
               onClick={() => setShowOriginalVideo(false)}
-              className={`px-4 py-2 rounded-full text-xs font-medium transition-all cursor-pointer ${
+              className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-medium transition-all cursor-pointer min-h-[40px] ${
                 !showOriginalVideo
                   ? 'bg-amber-300 text-slate-950 font-semibold shadow-[0_0_15px_rgba(251,191,36,0.3)]'
                   : 'bg-white/[0.05] text-slate-400 hover:text-white'
@@ -133,26 +133,26 @@ export const PromisesStoryPage: React.FC<PromisesStoryPageProps> = ({
             </button>
             <button
               onClick={() => setShowOriginalVideo(true)}
-              className={`px-4 py-2 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer min-h-[40px] ${
                 showOriginalVideo
                   ? 'bg-rose-500 text-white font-semibold shadow-[0_0_15px_rgba(244,63,94,0.3)]'
                   : 'bg-white/[0.05] text-slate-400 hover:text-white'
               }`}
             >
-              <Video className="w-3.5 h-3.5" />
-              <span>Watch Original Video Reel (Iris)</span>
+              <Video className="w-3.5 h-3.5 shrink-0" />
+              <span>Watch Reel Video (Iris)</span>
             </button>
           </div>
         )}
       </header>
 
       {/* Main Slide Deck Box */}
-      <section className="max-w-4xl mx-auto px-6 mb-24">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 mb-16 sm:mb-24 w-full">
         {!showOriginalVideo ? (
           /* Interactive Cinematic Slide Deck */
-          <div className="relative rounded-3xl bg-gradient-to-b from-[#181a2e] to-[#0d0e1c] border-2 border-amber-300/20 p-8 md:p-14 shadow-[0_25px_70px_rgba(0,0,0,0.8)] overflow-hidden">
+          <div className="relative rounded-3xl bg-gradient-to-b from-[#181a2e] to-[#0d0e1c] border-2 border-amber-300/20 p-5 sm:p-8 md:p-14 shadow-[0_25px_70px_rgba(0,0,0,0.8)] overflow-hidden w-full">
             {/* Top progress indicator bar */}
-            <div className="flex items-center gap-1.5 mb-8">
+            <div className="flex items-center gap-1 sm:gap-1.5 mb-6 sm:mb-8">
               {promiseSlides.map((s, idx) => (
                 <button
                   key={s.id}
@@ -160,7 +160,7 @@ export const PromisesStoryPage: React.FC<PromisesStoryPageProps> = ({
                     setCurrentSlideIndex(idx);
                     romanticAudio.playStarChime(idx);
                   }}
-                  className={`h-1.5 flex-1 rounded-full transition-all cursor-pointer ${
+                  className={`h-1.5 sm:h-2 flex-1 rounded-full transition-all cursor-pointer min-w-[8px] ${
                     idx === currentSlideIndex
                       ? 'bg-amber-300 shadow-[0_0_10px_rgba(251,191,36,0.6)]'
                       : idx < currentSlideIndex
@@ -173,20 +173,20 @@ export const PromisesStoryPage: React.FC<PromisesStoryPageProps> = ({
             </div>
 
             {/* Slide Header & Metadata */}
-            <div className="flex items-center justify-between border-b border-white/[0.08] pb-4 mb-8">
-              <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 sm:pb-4 mb-6 sm:mb-8">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 <span className="text-xs uppercase tracking-widest font-mono text-amber-200 font-semibold">
                   {currentSlide.order}
                 </span>
                 <span className="text-xs text-slate-500">·</span>
                 <span className="text-xs text-slate-400 font-mono">
-                  Promise {currentSlideIndex + 1} of {promiseSlides.length}
+                  {currentSlideIndex + 1} of {promiseSlides.length}
                 </span>
               </div>
 
               <button
                 onClick={(e) => handleMarkPromise(currentSlide.id, e)}
-                className={`p-2 rounded-full transition-all cursor-pointer ${
+                className={`p-2 rounded-full transition-all cursor-pointer min-w-[36px] min-h-[36px] flex items-center justify-center ${
                   markedPromises.has(currentSlide.id)
                     ? 'bg-rose-500/20 text-rose-400 border border-rose-400/40 shadow-[0_0_15px_rgba(244,63,94,0.4)]'
                     : 'bg-white/[0.04] text-slate-400 hover:text-white border border-white/[0.08]'
@@ -198,9 +198,9 @@ export const PromisesStoryPage: React.FC<PromisesStoryPageProps> = ({
             </div>
 
             {/* Main Promise Quote (Large Display Typography) */}
-            <div className="min-h-[160px] md:min-h-[190px] flex items-center justify-center my-6 text-center">
+            <div className="min-h-[130px] sm:min-h-[160px] md:min-h-[190px] flex items-center justify-center my-4 sm:my-6 text-center px-2">
               <h2
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif-dreamy font-normal text-white leading-tight tracking-wide animate-in fade-in zoom-in-95"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif-dreamy font-normal text-white leading-snug sm:leading-tight tracking-wide animate-in fade-in zoom-in-95 break-words"
                 style={{ textWrap: 'balance' }}
               >
                 “{currentSlide.promiseText}”
@@ -208,24 +208,24 @@ export const PromisesStoryPage: React.FC<PromisesStoryPageProps> = ({
             </div>
 
             {/* Gunjan's Personal Reflection for Dikshit */}
-            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm mt-8 mb-8">
-              <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-amber-200/80 mb-2">
-                <Sparkles className="w-3.5 h-3.5 text-rose-400" />
+            <div className="p-4 sm:p-6 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm mt-5 sm:mt-8 mb-5 sm:mb-8">
+              <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs uppercase tracking-wider text-amber-200/80 mb-2">
+                <Sparkles className="w-3.5 h-3.5 text-rose-400 shrink-0" />
                 <span>Gunjan's Reflection for {recipientName}</span>
               </div>
-              <p className="text-base md:text-lg text-slate-200 font-serif-dreamy italic leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-slate-200 font-serif-dreamy italic leading-relaxed break-words">
                 "{currentSlide.reflection}"
               </p>
             </div>
 
             {/* Slide Navigation Controls */}
-            <div className="flex items-center justify-between pt-4 border-t border-white/[0.08]">
+            <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-white/[0.08] gap-2">
               <button
                 onClick={handlePrevSlide}
-                className="px-5 py-2.5 rounded-full text-xs font-medium text-slate-300 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] transition-all flex items-center gap-2 cursor-pointer border border-white/10"
+                className="px-3.5 sm:px-5 py-2.5 rounded-full text-xs font-medium text-slate-300 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer border border-white/10 min-h-[44px]"
               >
                 <ChevronLeft className="w-4 h-4" />
-                <span>Previous Truth</span>
+                <span>Prev Truth</span>
               </button>
 
               <span className="text-xs font-mono text-amber-200/70 hidden sm:inline">
@@ -234,7 +234,7 @@ export const PromisesStoryPage: React.FC<PromisesStoryPageProps> = ({
 
               <button
                 onClick={handleNextSlide}
-                className="px-6 py-2.5 rounded-full text-xs font-semibold text-slate-950 bg-gradient-to-r from-amber-300 to-rose-300 hover:from-amber-200 hover:to-rose-200 transition-all flex items-center gap-2 cursor-pointer shadow-[0_0_20px_rgba(251,191,36,0.3)]"
+                className="px-4 sm:px-6 py-2.5 rounded-full text-xs font-semibold text-slate-950 bg-gradient-to-r from-amber-300 to-rose-300 hover:from-amber-200 hover:to-rose-200 transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer shadow-[0_0_20px_rgba(251,191,36,0.3)] min-h-[44px]"
               >
                 <span>Next Truth</span>
                 <ChevronRight className="w-4 h-4" />
@@ -243,14 +243,14 @@ export const PromisesStoryPage: React.FC<PromisesStoryPageProps> = ({
           </div>
         ) : (
           /* Video Reel Preview Box */
-          <div className="rounded-3xl bg-slate-950/80 border border-white/10 p-6 shadow-2xl text-center">
+          <div className="rounded-3xl bg-slate-950/80 border border-white/10 p-4 sm:p-6 shadow-2xl text-center w-full">
             <div className="max-w-md mx-auto rounded-2xl overflow-hidden border border-rose-500/30 shadow-[0_0_40px_rgba(244,63,94,0.2)] mb-4">
               <video
                 src={videoSrc}
                 controls
                 autoPlay
                 playsInline
-                className="w-full h-auto max-h-[580px] object-cover mx-auto"
+                className="w-full h-auto max-h-[500px] object-cover mx-auto"
               />
             </div>
             <p className="text-xs text-slate-400 font-serif-dreamy italic">
@@ -261,55 +261,55 @@ export const PromisesStoryPage: React.FC<PromisesStoryPageProps> = ({
       </section>
 
       {/* The Two Deep Points (From the Uploaded Screenshots) */}
-      <section className="max-w-5xl mx-auto px-6 border-t border-white/[0.08] pt-20">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-2 text-xs uppercase tracking-widest text-amber-200/80 mb-3 font-mono">
-            <Quote className="w-3.5 h-3.5 text-rose-400" />
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/[0.08] pt-14 sm:pt-20 w-full">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs uppercase tracking-widest text-amber-200/80 mb-3 font-mono">
+            <Quote className="w-3.5 h-3.5 text-rose-400 shrink-0" />
             <span>Two Deep Truths</span>
             <span aria-hidden="true">·</span>
             <span>Real Feelings</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif-dreamy font-normal text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif-dreamy font-normal text-white mb-3 sm:mb-4">
             Words That Felt Too True
           </h2>
-          <p className="text-sm md:text-base text-slate-300 font-light leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-slate-300 font-light leading-relaxed px-2">
             These two thoughts spoke directly to what has been growing between us. I wanted them right here in our world so you know how genuine this is.
           </p>
         </div>
 
         {/* Two Column Visual Presentation */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
           {deepTruths.map((truth, idx) => (
             <div
               key={truth.id}
-              className="rounded-3xl bg-slate-900/40 border border-white/[0.08] backdrop-blur-md p-8 flex flex-col justify-between shadow-[0_15px_45px_rgba(0,0,0,0.6)] relative overflow-hidden"
+              className="rounded-3xl bg-slate-900/40 border border-white/[0.08] backdrop-blur-md p-5 sm:p-7 md:p-8 flex flex-col justify-between shadow-[0_15px_45px_rgba(0,0,0,0.6)] relative overflow-hidden"
             >
               <div>
                 {/* Badge Header */}
-                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-6">
-                  <span className="text-xs font-mono uppercase tracking-wider text-rose-300/90 font-semibold">
+                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-4 sm:mb-6">
+                  <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-rose-300/90 font-semibold truncate">
                     {truth.badge}
                   </span>
-                  <span className="text-xs text-amber-200/70 font-mono">
+                  <span className="text-xs text-amber-200/70 font-mono shrink-0">
                     Point 0{idx + 1}
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-serif-dreamy font-normal text-white mb-6">
+                <h3 className="text-xl sm:text-2xl font-serif-dreamy font-normal text-white mb-4 sm:mb-6 break-words">
                   {truth.title}
                 </h3>
 
                 {/* Image preview with click to zoom */}
                 <div
                   onClick={() => setSelectedImage(truth.imagePath)}
-                  className="relative group rounded-2xl overflow-hidden border border-white/10 mb-6 cursor-pointer bg-black/40"
+                  className="relative group rounded-2xl overflow-hidden border border-white/10 mb-5 sm:mb-6 cursor-pointer bg-black/40"
                   title="Click to view full image"
                 >
                   <img
                     src={truth.imagePath}
                     alt={truth.title}
                     referrerPolicy="no-referrer"
-                    className="w-full h-56 object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-48 sm:h-56 object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <span className="px-3 py-1.5 rounded-full text-xs bg-black/70 text-white backdrop-blur-sm flex items-center gap-1.5">
@@ -320,18 +320,18 @@ export const PromisesStoryPage: React.FC<PromisesStoryPageProps> = ({
                 </div>
 
                 {/* The Exact Quote from Image */}
-                <blockquote className="p-5 rounded-2xl bg-white/[0.03] border-l-2 border-amber-300 text-sm md:text-base font-serif-dreamy text-slate-200 italic leading-relaxed mb-6">
+                <blockquote className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border-l-2 border-amber-300 text-xs sm:text-sm md:text-base font-serif-dreamy text-slate-200 italic leading-relaxed mb-5 sm:mb-6 break-words">
                   {truth.quoteText}
                 </blockquote>
               </div>
 
               {/* Gunjan's Reflection */}
-              <div className="pt-4 border-t border-white/[0.06]">
-                <div className="flex items-center gap-1.5 text-xs text-amber-200/90 font-medium mb-2 font-mono">
-                  <Sparkles className="w-3 h-3 text-amber-300" />
+              <div className="pt-3 sm:pt-4 border-t border-white/[0.06]">
+                <div className="flex items-center gap-1.5 text-xs text-amber-200/90 font-medium mb-1.5 sm:mb-2 font-mono">
+                  <Sparkles className="w-3 h-3 text-amber-300 shrink-0" />
                   <span>Gunjan's Note to {recipientName}:</span>
                 </div>
-                <p className="text-sm text-slate-300 font-light leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
                   {truth.gunjanNote}
                 </p>
               </div>
@@ -340,13 +340,13 @@ export const PromisesStoryPage: React.FC<PromisesStoryPageProps> = ({
         </div>
 
         {/* Closing Action: Back to Home */}
-        <div className="mt-16 text-center">
+        <div className="mt-12 sm:mt-16 text-center">
           <button
             onClick={onBackToHome}
-            className="px-8 py-3.5 rounded-full text-sm font-semibold bg-gradient-to-r from-amber-300 to-rose-300 text-slate-950 hover:from-amber-200 hover:to-rose-200 transition-all shadow-[0_0_25px_rgba(251,191,36,0.3)] cursor-pointer inline-flex items-center gap-2"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r from-amber-300 to-rose-300 text-slate-950 hover:from-amber-200 hover:to-rose-200 transition-all shadow-[0_0_25px_rgba(251,191,36,0.3)] cursor-pointer inline-flex items-center justify-center gap-2 min-h-[44px]"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Return to the Starlit World (Home)</span>
+            <span>Return to Starlit World (Home)</span>
           </button>
         </div>
       </section>

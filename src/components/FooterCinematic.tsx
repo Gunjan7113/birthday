@@ -19,9 +19,9 @@ export const FooterCinematic: React.FC<FooterCinematicProps> = ({
   };
 
   return (
-    <footer className="relative mt-20 border-t border-white/[0.08] overflow-hidden">
+    <footer className="relative mt-16 sm:mt-20 border-t border-white/[0.08] overflow-hidden w-full">
       {/* Background moonlit horizon panorama */}
-      <div className="relative min-h-[380px] flex items-center justify-center p-8 md:p-16">
+      <div className="relative min-h-[340px] sm:min-h-[380px] flex items-center justify-center p-6 sm:p-8 md:p-16">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-screen scale-105"
           style={{
@@ -31,29 +31,29 @@ export const FooterCinematic: React.FC<FooterCinematicProps> = ({
         <div className="absolute inset-0 bg-gradient-to-t from-[#060814] via-[#060814]/75 to-transparent pointer-events-none" />
 
         {/* Poetic Centerpiece */}
-        <div className="relative z-10 max-w-2xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-amber-200/80 mb-5">
-            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+        <div className="relative z-10 max-w-2xl mx-auto text-center w-full">
+          <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs uppercase tracking-widest text-amber-200/80 mb-4 sm:mb-5">
+            <Sparkles className="w-3.5 h-3.5 text-amber-300 shrink-0" />
             <span>Under The Starlit Horizon</span>
           </div>
 
           <p 
-            className="text-2xl md:text-3xl lg:text-4xl font-serif-dreamy font-normal text-white italic leading-snug mb-8"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif-dreamy font-normal text-white italic leading-snug mb-6 sm:mb-8 break-words px-2"
             style={{ textWrap: 'balance' }}
           >
             "{closingQuote}"
           </p>
 
-          <div className="flex items-center justify-center gap-2 text-sm text-rose-200/90 font-serif-dreamy mb-10">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-rose-200/90 font-serif-dreamy mb-8 sm:mb-10 px-2">
             <span>Made with quiet affection by {senderName}</span>
             <span aria-hidden="true">·</span>
             <span>Dedicated to {recipientName}</span>
           </div>
 
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <button
               onClick={scrollToTop}
-              className="px-5 py-2.5 rounded-full text-xs font-medium bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 border border-white/10 transition-colors flex items-center gap-2 cursor-pointer"
+              className="px-5 py-2.5 rounded-full text-xs font-medium bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 border border-white/10 transition-colors flex items-center gap-2 cursor-pointer min-h-[40px]"
             >
               <ArrowUp className="w-3.5 h-3.5" />
               <span>Back to the Sky</span>
@@ -61,7 +61,7 @@ export const FooterCinematic: React.FC<FooterCinematicProps> = ({
 
             <button
               onClick={onOpenEditor}
-              className="px-5 py-2.5 rounded-full text-xs font-medium bg-amber-400/10 hover:bg-amber-400/20 text-amber-200 border border-amber-300/30 transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="px-5 py-2.5 rounded-full text-xs font-medium bg-amber-400/10 hover:bg-amber-400/20 text-amber-200 border border-amber-300/30 transition-colors flex items-center gap-1.5 cursor-pointer min-h-[40px]"
             >
               <Feather className="w-3.5 h-3.5" />
               <span>Personalize Messages</span>
@@ -71,7 +71,7 @@ export const FooterCinematic: React.FC<FooterCinematicProps> = ({
       </div>
 
       {/* Quiet copyright / unboxed metadata bar */}
-      <div className="px-6 py-4 border-t border-white/[0.04] bg-[#04060d] text-center text-xs text-slate-500 font-light flex items-center justify-center gap-2">
+      <div className="px-4 py-3.5 sm:py-4 border-t border-white/[0.04] bg-[#04060d] text-center text-[11px] sm:text-xs text-slate-500 font-light flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
         <span>A Little World</span>
         <span aria-hidden="true">·</span>
         <span>{senderName} & {recipientName}</span>

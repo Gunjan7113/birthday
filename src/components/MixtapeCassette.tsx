@@ -168,28 +168,28 @@ export const MixtapeCassette: React.FC<MixtapeCassetteProps> = ({ tracks, recipi
   }, [currentTrackIndex]);
 
   return (
-    <section id="mixtape" className="relative py-24 px-6 lg:px-12 border-t border-white/[0.06]">
-      <div className="max-w-5xl mx-auto">
+    <section id="mixtape" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-12 border-t border-white/[0.06]">
+      <div className="max-w-5xl mx-auto w-full">
         {/* Section Header */}
-        <div className="text-center max-w-xl mx-auto mb-16">
-          <div className="flex items-center justify-center gap-2 text-xs uppercase tracking-widest text-amber-200/80 mb-3">
+        <div className="text-center max-w-xl mx-auto mb-10 sm:mb-16">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs uppercase tracking-widest text-amber-200/80 mb-3">
             <span>Audio Cassette Mixtape</span>
             <span aria-hidden="true">·</span>
             <span>Dedicated For {recipientName}</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif-dreamy font-normal text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif-dreamy font-normal text-white mb-3 sm:mb-4">
             Midnight Frequency
           </h2>
-          <p className="text-sm md:text-base text-slate-300 font-light leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-slate-300 font-light leading-relaxed px-2">
             A real cassette tape with music dedicated straight to you. Press play to listen to your dedicated playlist — from acoustic songs to sweet birthday melodies.
           </p>
         </div>
 
         {/* Cassette Deck Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
           {/* Physical Vintage Cassette Graphic */}
           <div className="lg:col-span-7">
-            <div className="relative rounded-3xl bg-gradient-to-b from-[#1c1d29] to-[#0e1019] border-2 border-white/10 p-6 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden">
+            <div className="relative rounded-3xl bg-gradient-to-b from-[#1c1d29] to-[#0e1019] border-2 border-white/10 p-4 sm:p-6 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden">
               {/* Media element for real audio/video playback */}
               {currentTrack.audioSrc && (
                 <video
@@ -198,16 +198,16 @@ export const MixtapeCassette: React.FC<MixtapeCassetteProps> = ({ tracks, recipi
                   src={currentTrack.audioSrc}
                   playsInline
                   preload="auto"
-                  className={showVideoStage ? "w-full h-52 rounded-2xl object-cover mb-4 border border-rose-500/30 shadow-lg" : "hidden"}
+                  className={showVideoStage ? "w-full h-44 sm:h-52 rounded-2xl object-cover mb-4 border border-rose-500/30 shadow-lg" : "hidden"}
                 />
               )}
 
               {/* Cassette Screw Details */}
-              <div className="flex justify-between items-center mb-4 text-slate-500">
-                <span className="w-2.5 h-2.5 rounded-full border border-slate-600 flex items-center justify-center text-[7px]">✕</span>
-                <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-mono tracking-widest text-amber-200/80 uppercase">
-                    GUNJAN · SIDE A · FOR DIKSHIT
+              <div className="flex flex-wrap justify-between items-center gap-1.5 mb-3 sm:mb-4 text-slate-500">
+                <span className="w-2.5 h-2.5 rounded-full border border-slate-600 flex items-center justify-center text-[7px] shrink-0">✕</span>
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 justify-center">
+                  <span className="text-[9px] sm:text-[11px] font-mono tracking-wider sm:tracking-widest text-amber-200/80 uppercase truncate max-w-[200px] sm:max-w-none">
+                    GUNJAN · SIDE A · FOR {recipientName.toUpperCase()}
                   </span>
                   {currentTrack.videoSrc && (
                     <button
@@ -216,52 +216,52 @@ export const MixtapeCassette: React.FC<MixtapeCassetteProps> = ({ tracks, recipi
                       title="Toggle stage video preview"
                     >
                       <Video className="w-2.5 h-2.5" />
-                      <span>{showVideoStage ? 'Hide Stage Video' : 'View Stage Video'}</span>
+                      <span>{showVideoStage ? 'Hide Video' : 'Stage Video'}</span>
                     </button>
                   )}
                 </div>
-                <span className="w-2.5 h-2.5 rounded-full border border-slate-600 flex items-center justify-center text-[7px]">✕</span>
+                <span className="w-2.5 h-2.5 rounded-full border border-slate-600 flex items-center justify-center text-[7px] shrink-0">✕</span>
               </div>
 
               {/* Tape Label Area */}
-              <div className="rounded-xl bg-[#ede8d8] text-slate-900 p-4 border border-amber-900/20 shadow-inner mb-6 relative">
-                <div className="flex items-center justify-between border-b border-amber-900/20 pb-2 mb-3">
+              <div className="rounded-xl bg-[#ede8d8] text-slate-900 p-3 sm:p-4 border border-amber-900/20 shadow-inner mb-4 sm:mb-6 relative">
+                <div className="flex items-center justify-between border-b border-amber-900/20 pb-2 mb-2 sm:mb-3">
                   <div className="flex items-center gap-1.5">
-                    <Music2 className="w-3.5 h-3.5 text-rose-800" />
-                    <span className="text-xs font-serif-dreamy font-bold tracking-widest text-rose-900">
+                    <Music2 className="w-3.5 h-3.5 text-rose-800 shrink-0" />
+                    <span className="text-[11px] sm:text-xs font-serif-dreamy font-bold tracking-wider sm:tracking-widest text-rose-900">
                       A TAPE OF UNSAID WORDS
                     </span>
                   </div>
-                  <span className="text-[11px] font-mono text-slate-700 font-semibold">
+                  <span className="text-[10px] sm:text-[11px] font-mono text-slate-700 font-semibold">
                     {currentTrack.audioSrc ? formatTime(duration) : currentTrack.duration}
                   </span>
                 </div>
 
-                <div className="text-lg md:text-xl font-script-handwritten font-bold text-slate-900">
+                <div className="text-base sm:text-lg md:text-xl font-script-handwritten font-bold text-slate-900 break-words">
                   {currentTrack.title}
                 </div>
-                <div className="text-xs text-slate-600 font-mono mt-0.5 flex items-center justify-between">
+                <div className="text-[11px] sm:text-xs text-slate-600 font-mono mt-0.5 flex flex-wrap items-center justify-between gap-1">
                   <span>Mood: {currentTrack.mood}</span>
                   {currentTrack.audioSrc && (
-                    <span className="text-rose-700 font-semibold text-[11px]">
+                    <span className="text-rose-700 font-semibold text-[10px] sm:text-[11px]">
                       Live Recorded Audio
                     </span>
                   )}
                 </div>
 
                 {/* Spool Windows */}
-                <div className="mt-4 pt-4 border-t border-amber-900/15 flex items-center justify-around bg-slate-900/95 rounded-lg p-3">
+                <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-amber-900/15 flex items-center justify-around bg-slate-900/95 rounded-lg p-2 sm:p-3">
                   {/* Left Spool */}
                   <div
-                    className={`w-12 h-12 rounded-full border-2 border-dashed border-amber-300/60 bg-slate-950 flex items-center justify-center transition-transform ${
+                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-dashed border-amber-300/60 bg-slate-950 flex items-center justify-center transition-transform shrink-0 ${
                       isPlaying ? 'animate-[spin_4s_linear_infinite]' : ''
                     }`}
                   >
-                    <div className="w-4 h-4 rounded-full bg-amber-400/80" />
+                    <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-amber-400/80" />
                   </div>
 
                   {/* Tape connecting window with seek progress */}
-                  <div className="flex-1 max-w-[140px] mx-3">
+                  <div className="flex-1 max-w-[90px] sm:max-w-[140px] mx-2 sm:mx-3">
                     <div className="h-2 w-full bg-amber-950/80 rounded-full flex items-center overflow-hidden border border-amber-800/40">
                       <div
                         className={`h-full bg-gradient-to-r from-amber-500 to-rose-400 transition-all ${
@@ -276,18 +276,18 @@ export const MixtapeCassette: React.FC<MixtapeCassetteProps> = ({ tracks, recipi
 
                   {/* Right Spool */}
                   <div
-                    className={`w-12 h-12 rounded-full border-2 border-dashed border-amber-300/60 bg-slate-950 flex items-center justify-center transition-transform ${
+                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-dashed border-amber-300/60 bg-slate-950 flex items-center justify-center transition-transform shrink-0 ${
                       isPlaying ? 'animate-[spin_4s_linear_infinite]' : ''
                     }`}
                   >
-                    <div className="w-4 h-4 rounded-full bg-amber-400/80" />
+                    <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-amber-400/80" />
                   </div>
                 </div>
 
                 {/* Scrubber slider for audio track */}
                 {currentTrack.audioSrc && (
                   <div className="mt-3 flex items-center gap-2">
-                    <span className="text-[10px] font-mono text-slate-600">
+                    <span className="text-[10px] font-mono text-slate-600 shrink-0">
                       {formatTime(currentTime)}
                     </span>
                     <input
@@ -299,7 +299,7 @@ export const MixtapeCassette: React.FC<MixtapeCassetteProps> = ({ tracks, recipi
                       onChange={handleSeek}
                       className="flex-1 h-1.5 bg-amber-900/20 rounded-lg appearance-none cursor-pointer accent-rose-600"
                     />
-                    <span className="text-[10px] font-mono text-slate-600">
+                    <span className="text-[10px] font-mono text-slate-600 shrink-0">
                       {formatTime(duration)}
                     </span>
                   </div>
@@ -307,11 +307,11 @@ export const MixtapeCassette: React.FC<MixtapeCassetteProps> = ({ tracks, recipi
               </div>
 
               {/* Tape Controls */}
-              <div className="flex items-center justify-between pt-2">
-                <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-1 sm:pt-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
                   <button
                     onClick={handlePrevTrack}
-                    className="p-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 hover:text-white transition-colors cursor-pointer"
+                    className="p-2.5 sm:p-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 hover:text-white transition-colors cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
                     title="Previous track"
                   >
                     <SkipBack className="w-4 h-4" />
@@ -319,7 +319,7 @@ export const MixtapeCassette: React.FC<MixtapeCassetteProps> = ({ tracks, recipi
 
                   <button
                     onClick={handleTogglePlay}
-                    className="px-6 py-3 rounded-xl bg-amber-300 hover:bg-amber-200 text-slate-950 font-medium transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)] flex items-center gap-2 cursor-pointer"
+                    className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-amber-300 hover:bg-amber-200 text-slate-950 font-medium transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)] flex items-center gap-2 cursor-pointer min-h-[44px]"
                   >
                     {isPlaying ? (
                       <>
@@ -336,7 +336,7 @@ export const MixtapeCassette: React.FC<MixtapeCassetteProps> = ({ tracks, recipi
 
                   <button
                     onClick={handleNextTrack}
-                    className="p-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 hover:text-white transition-colors cursor-pointer"
+                    className="p-2.5 sm:p-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 hover:text-white transition-colors cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
                     title="Next track"
                   >
                     <SkipForward className="w-4 h-4" />
@@ -345,7 +345,7 @@ export const MixtapeCassette: React.FC<MixtapeCassetteProps> = ({ tracks, recipi
                   {currentTrack.audioSrc && (
                     <button
                       onClick={toggleMute}
-                      className="p-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 hover:text-white transition-colors cursor-pointer ml-1"
+                      className="p-2.5 sm:p-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 hover:text-white transition-colors cursor-pointer ml-1 min-h-[44px] min-w-[44px] flex items-center justify-center"
                       title={isMuted ? "Unmute" : "Mute"}
                     >
                       {isMuted ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4" />}
@@ -354,7 +354,7 @@ export const MixtapeCassette: React.FC<MixtapeCassetteProps> = ({ tracks, recipi
                 </div>
 
                 {/* Animated Waveform Visualizer */}
-                <div className="flex items-end gap-1 h-6">
+                <div className="hidden xs:flex items-end gap-1 h-6">
                   {[40, 75, 100, 60, 90, 45, 80, 50].map((h, i) => (
                     <span
                       key={i}

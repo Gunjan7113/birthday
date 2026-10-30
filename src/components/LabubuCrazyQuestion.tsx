@@ -216,9 +216,11 @@ export const LabubuCrazyQuestion: React.FC<LabubuCrazyQuestionProps> = ({
   const handleDodging = () => {
     romanticAudio.playStarChime((dodgeCount % 5) + 1);
 
-    // Random offset inside bounded container
-    const randomX = (Math.random() - 0.5) * 320;
-    const randomY = (Math.random() - 0.5) * 200;
+    // Dynamic offset bounded strictly within the container dimensions
+    const containerW = containerRef.current ? containerRef.current.clientWidth : 320;
+    const maxOffset = Math.max(40, Math.min(containerW / 2 - 70, 130));
+    const randomX = (Math.random() - 0.5) * (maxOffset * 2);
+    const randomY = (Math.random() - 0.5) * 100;
 
     setNoPosition({ x: randomX, y: randomY });
     setDodgeCount((prev) => prev + 1);
@@ -264,38 +266,38 @@ export const LabubuCrazyQuestion: React.FC<LabubuCrazyQuestionProps> = ({
   return (
     <section
       id="future-vibes"
-      className="relative py-24 px-6 lg:px-12 border-t border-rose-500/20 bg-gradient-to-b from-[#090b1a] via-[#150f24] to-[#080711] overflow-hidden"
+      className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-12 border-t border-rose-500/20 bg-gradient-to-b from-[#090b1a] via-[#150f24] to-[#080711] overflow-hidden"
     >
       {/* Background starlight & soft romantic ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-rose-500/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/4 right-1/4 w-[350px] h-[350px] bg-amber-400/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-rose-500/10 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 right-1/4 w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] bg-amber-400/10 rounded-full blur-[80px] pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-4xl mx-auto relative z-10 w-full">
         {/* Playful Floating Labubu Friends on top */}
-        <div className="flex items-end justify-center gap-6 sm:gap-12 mb-6">
-          <div className="hidden sm:block transform -rotate-6">
-            <LabubuCutie pose="shy" className="w-20 h-28 opacity-80" />
+        <div className="flex items-end justify-center gap-4 sm:gap-12 mb-5 sm:mb-6">
+          <div className="hidden xs:block transform -rotate-6">
+            <LabubuCutie pose="shy" className="w-16 h-22 sm:w-20 sm:h-28 opacity-80" />
           </div>
           <div className="transform hover:rotate-3 transition-transform">
-            <LabubuCutie pose={isAccepted ? 'party' : 'love'} className="w-28 h-36" isDancing={isAccepted} />
+            <LabubuCutie pose={isAccepted ? 'party' : 'love'} className="w-24 h-32 sm:w-28 sm:h-36" isDancing={isAccepted} />
           </div>
-          <div className="hidden sm:block transform rotate-6">
-            <LabubuCutie pose="mischief" className="w-20 h-28 opacity-80" />
+          <div className="hidden xs:block transform rotate-6">
+            <LabubuCutie pose="mischief" className="w-16 h-22 sm:w-20 sm:h-28 opacity-80" />
           </div>
         </div>
 
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-rose-300 font-semibold px-4 py-1.5 rounded-full bg-rose-500/15 border border-rose-400/30 mb-4 shadow-[0_0_15px_rgba(244,63,94,0.2)]">
-            <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-spin" />
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs uppercase tracking-widest text-rose-300 font-semibold px-3.5 sm:px-4 py-1.5 rounded-full bg-rose-500/15 border border-rose-400/30 mb-3 sm:mb-4 shadow-[0_0_15px_rgba(244,63,94,0.2)]">
+            <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-spin shrink-0" />
             <span>Top Secret Question · Signature Required</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif-dreamy font-normal text-white mb-4 leading-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif-dreamy font-normal text-white mb-3 sm:mb-4 leading-tight break-words px-2">
             {recipientName}, do you wanna spend your future & all your crazy, goofy time with me?
           </h2>
 
-          <p className="text-sm md:text-base text-rose-200/80 font-light leading-relaxed max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm md:text-base text-rose-200/80 font-light leading-relaxed max-w-xl mx-auto px-2">
             Before answering, please read the fine print: signing up includes infinite laughing attacks, listening to {senderName} talk forever, stealing all your food, tight hugs, and zero returns!
           </p>
         </div>
@@ -303,40 +305,40 @@ export const LabubuCrazyQuestion: React.FC<LabubuCrazyQuestionProps> = ({
         {/* Interactive Play Area Card */}
         <div
           ref={containerRef}
-          className="relative max-w-2xl mx-auto rounded-3xl bg-gradient-to-b from-white/[0.07] to-white/[0.03] border-2 border-rose-400/30 p-8 md:p-12 text-center backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] min-h-[380px] flex flex-col justify-center items-center overflow-hidden"
+          className="relative max-w-2xl mx-auto rounded-3xl bg-gradient-to-b from-white/[0.07] to-white/[0.03] border-2 border-rose-400/30 p-5 sm:p-8 md:p-12 text-center backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] min-h-[340px] sm:min-h-[380px] flex flex-col justify-center items-center overflow-hidden w-full"
         >
           {!isAccepted ? (
             /* Question Phase with Options */
             <div className="w-full relative">
-              <div className="flex items-center justify-center gap-2 text-xs text-amber-200/90 font-mono mb-6">
-                <Smile className="w-4 h-4 text-rose-400" />
-                <span>Choose your answer wisely, Mahhhhh Chekuuuuu:</span>
+              <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-xs text-amber-200/90 font-mono mb-4 sm:mb-6">
+                <Smile className="w-4 h-4 text-rose-400 shrink-0" />
+                <span className="truncate max-w-[260px] sm:max-w-none">Choose your answer wisely, Mahhhhh Chekuuuuu:</span>
               </div>
 
               {/* Dodge Counter if Cheku tried to click No */}
               {dodgeCount > 0 && (
-                <div className="mb-6 inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-mono animate-bounce">
-                  <span>Cheku tried to say No {dodgeCount} times! 😂 (You know you love me!)</span>
+                <div className="mb-4 sm:mb-6 inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-200 text-[11px] sm:text-xs font-mono animate-bounce max-w-full">
+                  <span className="truncate">Cheku tried to say No {dodgeCount} times! 😂 (You love me!)</span>
                 </div>
               )}
 
               {/* The 3 Buttons: YES, DEFINITELY YES, and RUNAWAY NO */}
-              <div className="flex flex-wrap items-center justify-center gap-4 relative min-h-[140px] pt-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 relative min-h-[140px] pt-2 sm:pt-4 w-full">
                 {/* 1. YES OPTION */}
                 <button
                   onClick={(e) => handleAcceptYes(e, 'yes')}
-                  className="px-7 py-4 rounded-full text-sm md:text-base font-semibold bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-400 hover:to-rose-500 text-white shadow-[0_0_25px_rgba(244,63,94,0.4)] hover:shadow-[0_0_35px_rgba(244,63,94,0.6)] transition-all transform hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2 shrink-0 z-20"
+                  className="w-full sm:w-auto px-6 sm:px-7 py-3 sm:py-4 rounded-full text-xs sm:text-sm md:text-base font-semibold bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-400 hover:to-rose-500 text-white shadow-[0_0_25px_rgba(244,63,94,0.4)] hover:shadow-[0_0_35px_rgba(244,63,94,0.6)] transition-all transform hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center gap-2 shrink-0 z-20 min-h-[44px]"
                 >
-                  <Heart className="w-4 h-4 fill-white text-white" />
+                  <Heart className="w-4 h-4 fill-white text-white shrink-0" />
                   <span>YES! 💖</span>
                 </button>
 
                 {/* 2. DEFINITELY YES OPTION */}
                 <button
                   onClick={(e) => handleAcceptYes(e, 'definite')}
-                  className="px-8 py-4 rounded-full text-sm md:text-base font-bold bg-gradient-to-r from-amber-400 via-rose-400 to-amber-300 hover:from-amber-300 hover:to-rose-300 text-slate-950 shadow-[0_0_30px_rgba(251,191,36,0.4)] hover:shadow-[0_0_40px_rgba(251,191,36,0.6)] transition-all transform hover:scale-110 active:scale-95 cursor-pointer flex items-center gap-2 shrink-0 z-20 border-2 border-white/40"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full text-xs sm:text-sm md:text-base font-bold bg-gradient-to-r from-amber-400 via-rose-400 to-amber-300 hover:from-amber-300 hover:to-rose-300 text-slate-950 shadow-[0_0_30px_rgba(251,191,36,0.4)] hover:shadow-[0_0_40px_rgba(251,191,36,0.6)] transition-all transform hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center gap-2 shrink-0 z-20 border-2 border-white/40 min-h-[44px]"
                 >
-                  <Sparkles className="w-5 h-5 text-slate-950 animate-spin" />
+                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 animate-spin shrink-0" />
                   <span>DEFINITELY YES!! 1000% 🥰✨</span>
                 </button>
 
@@ -346,13 +348,13 @@ export const LabubuCrazyQuestion: React.FC<LabubuCrazyQuestionProps> = ({
                     transform: `translate(${noPosition.x}px, ${noPosition.y}px)`,
                     transition: 'transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1)',
                   }}
-                  className="z-30"
+                  className="z-30 w-full sm:w-auto flex justify-center"
                 >
                   <button
                     onMouseEnter={handleDodging}
                     onTouchStart={handleDodging}
                     onClick={handleDodging}
-                    className="px-5 py-3 rounded-full text-xs font-medium bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 border border-slate-600/50 shadow-md cursor-pointer transition-colors whitespace-nowrap select-none"
+                    className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-xs font-medium bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 border border-slate-600/50 shadow-md cursor-pointer transition-colors whitespace-nowrap select-none min-h-[44px]"
                   >
                     <span>{playfulNoTexts[noButtonTextIndex]}</span>
                   </button>
@@ -360,28 +362,28 @@ export const LabubuCrazyQuestion: React.FC<LabubuCrazyQuestionProps> = ({
               </div>
 
               {/* Playful footer hint */}
-              <div className="mt-8 text-xs text-slate-400 font-light flex items-center justify-center gap-2">
-                <ShieldAlert className="w-3.5 h-3.5 text-rose-400/80" />
+              <div className="mt-6 sm:mt-8 text-[11px] sm:text-xs text-slate-400 font-light flex items-center justify-center gap-1.5 px-2">
+                <ShieldAlert className="w-3.5 h-3.5 text-rose-400/80 shrink-0" />
                 <span>Notice: The "No" button is experiencing extreme technical difficulties.</span>
               </div>
             </div>
           ) : (
             /* Celebration Phase! Once Cheku accepts */
-            <div className="w-full text-center py-4 animate-in zoom-in-95 fade-in duration-500">
-              <div className="mb-4 flex items-center justify-center gap-3">
-                <PartyPopper className="w-8 h-8 text-amber-300 animate-bounce" />
-                <span className="text-3xl md:text-4xl font-serif-dreamy font-bold text-amber-200">
+            <div className="w-full text-center py-2 sm:py-4 animate-in zoom-in-95 fade-in duration-500">
+              <div className="mb-3 sm:mb-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+                <PartyPopper className="w-6 h-6 sm:w-8 sm:h-8 text-amber-300 animate-bounce shrink-0" />
+                <span className="text-2xl sm:text-3xl md:text-4xl font-serif-dreamy font-bold text-amber-200 break-words">
                   I KNEW IT!! YOU'RE MINE FOREVER! 🎉🧸💖
                 </span>
-                <PartyPopper className="w-8 h-8 text-amber-300 animate-bounce" />
+                <PartyPopper className="w-6 h-6 sm:w-8 sm:h-8 text-amber-300 animate-bounce shrink-0" />
               </div>
 
-              <p className="text-lg md:text-xl font-serif-dreamy text-rose-100 max-w-lg mx-auto mb-6 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl font-serif-dreamy text-rose-100 max-w-lg mx-auto mb-5 sm:mb-6 leading-relaxed px-2">
                 Contract officially sealed in the starlight for {recipientName}! You are officially stuck with {senderName} for all your future adventures, late-night chats, and pure craziness.
               </p>
 
               {/* Official Agreement Clauses */}
-              <div className="p-5 rounded-2xl bg-black/30 border border-rose-300/30 text-left max-w-md mx-auto mb-6 space-y-2 text-xs md:text-sm text-slate-200 font-mono">
+              <div className="p-4 sm:p-5 rounded-2xl bg-black/30 border border-rose-300/30 text-left max-w-md mx-auto mb-5 sm:mb-6 space-y-2 text-xs sm:text-sm text-slate-200 font-mono">
                 <div className="flex items-center gap-2 text-emerald-300">
                   <Check className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>Unlimited laughter & goofy voice notes</span>
@@ -403,7 +405,7 @@ export const LabubuCrazyQuestion: React.FC<LabubuCrazyQuestionProps> = ({
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <button
                   onClick={handleExtraConfetti}
-                  className="px-6 py-3 rounded-full text-xs font-semibold bg-rose-500 hover:bg-rose-400 text-white shadow-[0_0_20px_rgba(244,63,94,0.4)] transition-all cursor-pointer flex items-center gap-2"
+                  className="px-6 py-3 rounded-full text-xs font-semibold bg-rose-500 hover:bg-rose-400 text-white shadow-[0_0_20px_rgba(244,63,94,0.4)] transition-all cursor-pointer flex items-center gap-2 min-h-[44px]"
                 >
                   <Heart className="w-4 h-4 fill-white" />
                   <span>Pinky Promise Sealed Forever 🤙</span>
